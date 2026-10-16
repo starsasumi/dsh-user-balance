@@ -74,21 +74,40 @@ The Host cache is shared between sessions.
 
 ## Install
 
-The plugin is a `file:` dependency of the DSH profile.
+Install the plugin from GitHub into a profile:
 
 ```sh
 cd ~/.dsh/profiles/web
-pnpm add file:/data/projects/dsh-user-balance
+dsh plugin --profile web add github:starsasumi/dsh-user-balance
 ```
 
-`pnpm add` and `dsh plugin … remove` rewrite `package.json`. Check two items
-after either command:
+The command writes the dependency only. Add the row to `dsh.profile.bundles` in
+the profile's `package.json`:
 
-1. `dependencies` still lists the other profile plugins.
-2. `dsh.profile.bundles` still lists `dsh-user-balance`.
+```json
+"dsh": {
+  "profile": {
+    "bundles": [
+      "dsh-user-balance"
+    ]
+  }
+}
+```
+
+Keep the rows already in that list.
 
 The bundle row is the switch. Without it, the plugin is installed and nothing
 loads it.
+
+The **Plugins** page of the Web GUI writes the dependency and the row. It is the
+safer path.
+
+The install pins one commit. Update it with:
+
+```sh
+cd ~/.dsh/profiles/web
+pnpm update dsh-user-balance
+```
 
 No restart is needed. The profile recomposes live. A hard page reload picks up
 the client bundle. `profile-backup/` holds the profile manifests from before the
