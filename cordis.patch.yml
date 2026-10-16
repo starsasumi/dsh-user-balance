@@ -1,0 +1,7 @@
+# dsh-user-balance — loader row for the DeepSeek balance chip.
+#
+# The bundle package contributes one row. `dsh.client` in package.json is what
+# makes the Host serve lib/client.js as a browser bundle.
+- insert:
+    - id: user-balance
+      name: 'dsh-user-balance'

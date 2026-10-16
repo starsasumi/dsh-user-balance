@@ -1,0 +1,45 @@
+{
+  "name": "dsh-user-balance",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Shows the DeepSeek account balance in the DSH web GUI. The Host half reads the API key from the credentials service, so the key never reaches the model, a tool result, or the browser.",
+  "type": "module",
+  "main": "lib/index.js",
+  "exports": {
+    ".": {
+      "default": "./lib/index.js"
+    },
+    "./client": "./lib/client.js",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "lib",
+    "scripts",
+    "cordis.patch.yml",
+    "README.md"
+  ],
+  "keywords": [
+    "dsh",
+    "deepseek-harness",
+    "cordis",
+    "plugin",
+    "balance"
+  ],
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "client": {
+      "platform": "web",
+      "immediately": true
+    }
+  },
+  "peerDependencies": {},
+  "scripts": {
+    "verify": "node scripts/verify.mjs"
+  },
+  "engines": {
+    "node": "^22.19.0 || >=24.0.0"
+  },
+  "license": "MIT"
+}
